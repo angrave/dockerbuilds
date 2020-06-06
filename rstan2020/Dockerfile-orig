@@ -1,0 +1,7 @@
+FROM jrnold/rstan:latest
+
+# Remove options not appropriate for Condor
+RUN rm /home/rstudio/.Rprofile
+
+RUN install2.r --error --deps TRUE edstan MASS \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
